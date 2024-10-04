@@ -1,8 +1,22 @@
 #include <iostream>
-int main(int argc, char* args[])
-{
-    for (int i = argc - 1; i > 0; i--)
-    {
-        std::cout << args[i] << std::endl;
+#include <list>
+#include <iterator> 
+#include <cstdlib>  
+
+int main(int argc, char* argv[]) {
+
+    std::list<int> intList;
+
+    for (int i = 1; i < argc; ++i) {
+        int temp = std::atoi(argv[i]);
+        intList.push_back(temp);
     }
+
+    std::list<int>::reverse_iterator it = intList.rbegin();
+    while (it != intList.rend()) {
+        std::cout << (*it)(*it) << std::endl;
+        it++;
+    }
+
+    return 0;
 }
